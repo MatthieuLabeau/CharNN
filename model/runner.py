@@ -30,6 +30,9 @@ class datarunner(object):
             self.labelsChar_ph = tf.placeholder(dtype=tf.int64, shape=[None, out_len, word_len])
             self.PhL.append(self.labelsChar_ph)
             self.ShL.append([out_len, word_len])
+        self.evalLabels_ph = tf.placeholder(dtype=tf.int64, shape=[None, out_len])
+        self.PhL.append(self.evalLabels_ph)
+        self.ShL.append([out_len])            
 
         self.queue = tf.RandomShuffleQueue(shapes=self.ShL,
                                            dtypes=[tf.int64] * len(self.ShL),
